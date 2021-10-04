@@ -1,4 +1,4 @@
-namespace RutLib.Utils
+namespace Rut.Utils
 {
     public class Validator
     {

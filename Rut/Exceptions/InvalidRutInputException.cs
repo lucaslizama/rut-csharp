@@ -1,7 +1,7 @@
 using System;
 using System.Runtime.Serialization;
 
-namespace RutLib.Exceptions
+namespace Rut.Exceptions
 {
     public class InvalidRutInputException : Exception
     {

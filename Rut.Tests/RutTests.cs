@@ -1,9 +1,9 @@
 using System.Collections.Generic;
 using Xunit;
 
-namespace RutLib.Tests
+namespace Rut.Tests
 {
-    public class RutUnitTests
+    public class RutTests
     {
         [Theory]
         [InlineData(18464695)]
@@ -29,20 +29,22 @@ namespace RutLib.Tests
         [InlineData(18464695, '1')]
         [InlineData(18835838, '1')]
         [InlineData(1, '9')]
-        public void ValidIntRutShouldProduceValidDv(int rut, char dv)
+        [InlineData(2, '7')]
+        public void IntRutShouldProduceValidDv(int rut, char dv)
         {
             Rut instance = new Rut(rut);
-            Assert.Equal(dv, instance.DV);
+            Assert.Equal(dv, instance.Dv);
         }
 
         [Theory]
-        [InlineData(new int[] { 5, 9, 6, 4, 6, 4, 8, 1 }, 164)] // 18464695
-        [InlineData(new int[] { 8, 3, 8, 5, 3, 8, 8, 1 }, 175)] // 18835838
-        [InlineData(new int[] { 1 }, 2)]
-        public void InversedRutDigitsShouldSumCorrectly(IEnumerable<int> digits, int sum)
+        [InlineData("18464695", '1')]
+        [InlineData("18835838", '1')]
+        [InlineData("1", '9')]
+        [InlineData("2", '7')]
+        public void StringRutShouldProduceValidDv(string rut, char dv)
         {
-            Rut instance = new Rut(1);
-            Assert.Equal(sum, instance.SumInversedRutDigits(digits));
+            Rut instance = new Rut(rut);
+            Assert.Equal(dv, instance.Dv);
         }
     }
 }
