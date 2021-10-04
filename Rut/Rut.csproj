@@ -1,8 +1,18 @@
 <Project Sdk="Microsoft.NET.Sdk">
     <PropertyGroup>
         <PackageId>LucasLizama.Rut</PackageId>
-        <Version>0.1.0</Version>
-        <Authors>Lucas Lizama</Authors>
+        <Title>Rut</Title>
+        <Description>
+            Simple to use Chilean Rut utilitary library.
+            Features:
+            - Rut validation
+            - DV calculation
+            - Rut cleaning
+            - Rut formatting
+        </Description>
+        <PackageReadmeFile>README.md</PackageReadmeFile>
+        <Version>0.1.2</Version>
+        <Authors>lucaslizama</Authors>
         <RepositoryUrl></RepositoryUrl>
         <TargetFrameworks>netstandard2.1;netstandard2.0;net5.0;netcoreapp3.1;net48;net472;net471;net47;net462;net461;net46;net452;net451;net45</TargetFrameworks>
         <IsPackable>true</IsPackable>
@@ -10,4 +20,7 @@
         <RepositoryUrl>https://github.com/lucaslizama/rut</RepositoryUrl>
         <RepositoryType>git</RepositoryType>
     </PropertyGroup>
+    <ItemGroup>
+        <None Include="..\README.md" Pack="true" PackagePath=""/>
+    </ItemGroup>
 </Project>
