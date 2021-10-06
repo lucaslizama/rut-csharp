@@ -7,10 +7,9 @@ namespace Rut.Utils
 {
     public class Formatter
     {
-        public static string FormatStandard(int number, char dv)
+        public static string FormatClean(int number, char dv)
         {
             return string.Concat(number, "-", dv);
-
         }
 
         public static string FormatWithDots(int number, char dv)
