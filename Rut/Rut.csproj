@@ -2,14 +2,6 @@
     <PropertyGroup>
         <PackageId>LucasLizama.Rut</PackageId>
         <Title>Rut</Title>
-        <Description>
-            Simple to use Chilean Rut utilitary library.
-            Features:
-            - Rut validation
-            - DV calculation
-            - Rut cleaning
-            - Rut formatting
-        </Description>
         <PackageReadmeFile>README.md</PackageReadmeFile>
         <Version>0.1.2</Version>
         <Authors>lucaslizama</Authors>
