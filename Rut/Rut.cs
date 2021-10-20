@@ -1,3 +1,4 @@
+using System;
 using Rut.Exceptions;
 using Rut.Utils;
 
@@ -10,20 +11,19 @@ namespace Rut
 
         public int Number { get => number; set => number = value; }
         public char Dv { get => dv; set => dv = value; }
-        public string WithDots { get => Formatter.FormatWithDots(number, dv); }
-        public string WithDotsNoDv { get => Formatter.FormatWithDotsNoDv(number); }
-        public string CleanRut { get => Formatter.FormatClean(number, dv); }
-        public bool Valid { get => Validator.IsValid(number, dv); }
+        public string WithDots { get => Formatter.AddDots(number, dv); }
+        public string WithDotsNoDv { get => Formatter.AddDotsNoDv(number); }
+        public string CleanRut { get => Formatter.Clean(number, dv); }
+        public bool Valid { get => Validator.IsRutValid(number, dv); }
 
         /// <summary>
         /// Creates a rut object from a rut number and parse
         /// </summary>
-        /// <param name="rut"></param>
-        public Rut(int rut)
+        /// <param name="number"></param>
+        public Rut(int number)
         {
-            if (!Validator.IsValid(rut)) throw new InvalidRutInputException("The rut is invalid!");
-            this.number = rut;
-            this.dv = Calculator.CalculateDV(rut);
+            if (!Validator.IsRutValid(number)) throw new InvalidRutStringException("The rut is invalid!");
+            AssignRutValues(number);
         }
 
         /// <summary>
@@ -32,27 +32,52 @@ namespace Rut
         /// </summary>
         /// <param name="rut">Rut number</param>
         /// <param name="dv">Rut Dv</param>
-        public Rut(int rut, char dv)
+        public Rut(int number, char dv)
         {
-            this.number = rut;
-            this.dv = dv;
+            AssignRutValues(number, dv);
         }
 
         /// <summary>
-        /// Parses rut from a string in a variety of formats.
+        /// Parses rut from a string in a variety of formats into
+        /// a Rut object.
         /// 
         /// Supported formats: 
         /// 1. 11.111.111-1
         /// 2. 11111111-1
         /// 3. 11111111
+        /// 4. 000011.111.111-1
+        /// 5. 000011111111-1
+        /// 6. 000011111111
         /// 
         /// </summary>
         /// <param name="rut">Valid rut string</param>
         public Rut(string rut)
         {
-            if (!Validator.IsValid(rut)) throw new InvalidRutInputException("The rut is invalid!");
-            this.number = int.Parse(rut);
-            this.dv = Calculator.CalculateDV(rut);
+            string cleanRut = Cleaner.CleanRutString(rut);
+            bool invalid = !Validator.IsRutValid(cleanRut);
+            if (invalid) throw new InvalidRutStringException("The rut is invalid!");
+            AssignRutValues(Parser.ParseCleanRutString(cleanRut));
+        }
+
+        private void AssignRutValues(int number, char dv)
+        {
+            this.number = number;
+            this.dv = dv;
+        }
+
+        private void AssignRutValues(Tuple<int, char> rut)
+        {
+            AssignRutValues(rut.Item1, rut.Item2);
+        }
+
+        private void AssignRutValues(int number)
+        {
+            AssignRutValues(number, Calculator.CalculateDV(number));
+        }
+
+        public override string ToString()
+        {
+            return $"Status: {(Valid ? "Valid" : "Invalid")}\nRut:{WithDots}";
         }
     }
 }

@@ -1,36 +1,69 @@
+using System.Linq;
+
 namespace Rut.Utils
 {
     public class Validator
     {
-        public static bool IsValid(int rut)
+        private static readonly char[] VALID_DV_VALUES = { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'K' };
+
+        public static bool IsRutValid(int rut)
         {
             string textRut = rut.ToString();
             if (textRut.Length > 8) return false;
             return true;
         }
 
-        public static bool IsValid(string rut)
+        public static bool IsRutValid(string rut)
         {
             if (rut == null) return false;
-            if (rut.Length == 0 || rut.Length > 8) return false;
-            if (!int.TryParse(rut, out int result)) return false;
+            string cleanRut = Cleaner.CleanRutString(rut);
+            return cleanRut.Contains('-') ? ValidateCleanRut(cleanRut) : ValidateCleanRutNoDv(cleanRut);
+        }
+
+        private static bool ValidateCleanRut(string rut)
+        {
+            string[] rutParts = rut.Split('-');
+            if (rutParts.Length != 2) return false;
+            if (rutParts[0].Length > 8) return false;
+            if (rutParts[1].Length != 1) return false;
+            if (IsInvalidDv(rutParts[1][0])) return false;
             return true;
         }
 
-        public static bool IsValid(int rut, char dv)
+        private static bool ValidateCleanRutNoDv(string rut)
         {
-            if (!IsValid(rut)) return false;
+            if (!int.TryParse(rut, out int number)) return false;
+            return IsRutValid(number);
+        }
+
+        public static bool IsRutValid(int rut, char dv)
+        {
+            if (!IsRutValid(rut)) return false;
             if (Calculator.CalculateDV(rut) != dv) return false;
 
             return true;
         }
 
-        public static bool IsValid(string rut, char dv)
+        public static bool IsRutValid(string rut, char dv)
         {
-            if (!IsValid(rut)) return false;
+            if (!IsRutValid(rut)) return false;
             if (Calculator.CalculateDV(rut) != dv) return false;
 
             return true;
+        }
+
+        public static bool IsValidDv(char dv)
+        {
+            return VALID_DV_VALUES.Any(valid =>
+            {
+                bool equal = dv == valid;
+                return equal;
+            });
+        }
+
+        public static bool IsInvalidDv(char dv)
+        {
+            return !IsValidDv(dv);
         }
     }
 }

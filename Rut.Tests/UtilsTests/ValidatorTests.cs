@@ -1,4 +1,4 @@
-namespace Rut.Tests.Utils
+namespace Rut.Tests.UtilsTests
 {
     public class ValidatorTests
     {

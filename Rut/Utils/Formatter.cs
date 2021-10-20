@@ -7,32 +7,33 @@ namespace Rut.Utils
 {
     public class Formatter
     {
-        public static string FormatClean(int number, char dv)
+        public static string Clean(int number, char dv)
         {
             return string.Concat(number, "-", dv);
         }
 
-        public static string FormatWithDots(int number, char dv)
+        public static string AddDots(int number, char dv)
         {
-            List<char> numeros = number.ToString().ToCharArray().ToList();
+            return $"{AddDotsNoDv(number)}-{dv}";
+        }
+
+        public static string AddDotsNoDv(int number)
+        {
+            List<char> digits = number.ToString().ToCharArray().ToList();
             int steps = 0, iterations = 1;
-            for (int i = numeros.Count - 1; i >= 0; i--)
+            for (int i = digits.Count - 1; i >= 0; i--)
             {
                 if (steps == 3)
                 {
-                    numeros.Insert(i + iterations, '.');
+                    digits.Insert(i + iterations, '.');
                     iterations++;
                     steps = 0;
+                    i++;
                     continue;
                 }
                 steps++;
             }
-            return string.Concat(new String(numeros.ToArray()), "-", dv);
-        }
-
-        public static string FormatWithDotsNoDv(int number)
-        {
-            throw new NotImplementedException();
+            return string.Concat(digits.ToArray(), '-');
         }
     }
 }

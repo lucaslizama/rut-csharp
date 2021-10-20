@@ -52,5 +52,61 @@ namespace Rut.Utils
                 return result;
             });
         }
+
+        public static List<List<T>> Chunk<T>(IEnumerable<T> numbers, int size)
+        {
+            if (numbers.Count() == 0) return new List<List<T>>();
+            if (size > numbers.Count()) return new List<List<T>> { numbers.ToList() };
+
+            List<T> numbersList = numbers.ToList();
+            List<List<T>> chunks = new List<List<T>>();
+
+            int numberCount = numbersList.Count;
+            int chunksCount = CountChunks(numberCount, size);
+
+            for (int i = 0; i < chunksCount; i++)
+            {
+                int index = i * size;
+                int take = CalculateTake(numberCount, index, size);
+                chunks.Add(numbersList.GetRange(index, take));
+            }
+
+            return chunks;
+        }
+
+        public static List<List<T>> ChunkLeft<T>(IEnumerable<T> numbers, int size)
+        {
+            if (numbers.Count() == 0) return new List<List<T>>();
+            if (size > numbers.Count()) return new List<List<T>> { numbers.ToList() };
+
+            List<T> numbersList = numbers.ToList();
+            List<List<T>> chunks = new List<List<T>>();
+
+            int numberCount = numbersList.Count;
+            int chunksCount = CountChunks(numberCount, size);
+
+            for (int i = chunksCount - 1; i >= 0; i--)
+            {
+                int index = i * size;
+                int take = CalculateTake(numberCount, index, size);
+                chunks.Add(numbersList.GetRange(index, take));
+            }
+
+            return chunks;
+        }
+
+        private static int CalculateTake(int numberCount, int index, int size)
+        {
+            int overflow = index + size;
+            bool overflowed = overflow > numberCount;
+            int rest = overflow - numberCount;
+            int take = overflowed ? rest : size;
+            return take;
+        }
+
+        private static int CountChunks(int totalElements, int chunkSize)
+        {
+            return totalElements % chunkSize == 0 ? totalElements / chunkSize : (totalElements / chunkSize) + 1;
+        }
     }
 }
