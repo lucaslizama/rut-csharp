@@ -12,7 +12,7 @@ namespace Rut.Tests
         [InlineData(2, '7')]
         public void ValidIntRutShouldProduceValidDv(int rut, char dv)
         {
-            Rut instance = new Rut(rut);
+            var instance = new Rut(rut);
             Assert.Equal(dv, instance.Dv);
         }
 
@@ -33,7 +33,7 @@ namespace Rut.Tests
         [InlineData("2", '7')]
         public void ValidStringRutShouldProduceValidDv(string rut, char dv)
         {
-            Rut instance = new Rut(rut);
+            var instance = new Rut(rut);
             Assert.Equal(dv, instance.Dv);
         }
 
@@ -45,7 +45,7 @@ namespace Rut.Tests
         [InlineData("1.234-3")]
         public void ValidStringRutWithDashAndDvShouldInitializeCorrectly(string rut)
         {
-            Rut instance = new Rut(rut);
+            var instance = new Rut(rut);
 
         }
 
