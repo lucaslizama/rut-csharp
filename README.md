@@ -10,8 +10,7 @@
 Rut is a library written with the purpose of centralizing all
 common Chilean Rut operations and use cases in a lightweight 
 and easy to use package. It's written in C# and targets most 
-.NET recent versions. It's main features include a **Parser**, 
-**Formatter** and a **Generator** for Chilean Ruts. 
+.NET recent versions.
 
 ### Technologies
 
@@ -34,6 +33,22 @@ and easy to use package. It's written in C# and targets most
 - .NET Framework 4.5.2
 - .NET Framework 4.5.1
 - .NET Framework 4.5.0
+
+### Features
+
+- Manage all rut related operations from an instance of the Rut class.
+- Parse rut from text in various formats.
+- Calculate rut DV (Verification Digit) automatically or on demand.
+- Validate rut DV.
+- Generate random Rut or Rut's
+- All code used by the Rut class to calculate, parse, validate 
+and format is public and stored in utility classes on the `Rut.Utils`
+namespace, you can use them any way you want.
+
+### TODO
+
+- Format rut in many ways (Dots, No Dots, Dots with no DV, etc)
+- Generate random Rut's from a specified DV
 
 ### Setup
 
