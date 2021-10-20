@@ -59,7 +59,7 @@ and easy to use package. It's written in C# and targets most
 - Parse rut from text in various formats.
 - Calculate rut DV (Verification Digit) automatically or on demand.
 - Validate rut DV.
-- Generate random Rut or Rut's
+- Generate random Rut or Rut's with or without duplicates.
 - All code used by the Rut class to calculate, parse, validate 
 and format is public and stored in utility classes on the `Rut.Utils`
 namespace, you can use them any way you want.
