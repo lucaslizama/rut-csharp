@@ -1,4 +1,13 @@
 # Rut - Validator, Formatter & Generator
+![GitHub repo size](https://img.shields.io/github/repo-size/lucaslizama/rut?style=for-the-badge)
+![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/lucaslizama/rut?style=for-the-badge)
+![Lines of code](https://img.shields.io/tokei/lines/github/lucaslizama/rut?style=for-the-badge)
+![GitHub Repo stars](https://img.shields.io/github/stars/lucaslizama/rut?style=for-the-badge)
+![Nuget](https://img.shields.io/nuget/dt/LucasLizama.Rut?style=for-the-badge)
+![Nuget](https://img.shields.io/nuget/v/Lucaslizama.Rut?style=for-the-badge)
+![GitHub](https://img.shields.io/github/license/lucaslizama/rut?style=for-the-badge)
+![Twitter URL](https://img.shields.io/twitter/url?style=for-the-badge&url=https%3A%2F%2Fimg.shields.io%2Ftwitter%2Furl%3Fstyle%3Dsocial%26url%3Dhttps%253A%252F%252Ftwitter.com%252FLucaslizama)
+
 
 ## Table of Contents
 
