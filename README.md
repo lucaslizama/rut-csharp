@@ -64,9 +64,71 @@ and easy to use package. It's written in C# and targets most
 and format is public and stored in utility classes on the `Rut.Utils`
 namespace, you can use them any way you want.
 
+## Usage
+
+### Rut Class
+
+All functionality is available by creating an instance of the Rut class using
+one the many constructors available, in almost all cases the DV will be calculated
+automatically except if it's specified explicitly.
+
+```c#
+using Rut;
+
+static void Main(string[] args) // args = {"11111111", "1-9", "18.464.695", "Not A Rut"} 
+{
+    Rut rut1 = new Rut(args[0])
+    Rut rut2 = new Rut(args[1])
+    Rut rut3 = new Rut(args[2])
+    Rut rut4 = new Rut(args[3]) // This would throw an InvalidRutStringException
+    rut rut5 = new Rut("11.111.111", '5') // The Dv is wrong in this one
+    
+    // Check if rut is valid
+    Console.WriteLine($"Rut 1 valid: ${rut1.Valid}") // True
+    Console.WriteLine($"Rut 2 valid: ${rut2.Valid}") // True
+    Console.WriteLine($"Rut 3 valid: ${rut3.Valid}") // True
+    Console.WriteLine($"Rut 5 valid: ${rut5.Valid}") // False
+    
+    // Rut string Formats
+    Console.WriteLine($"Rut 1: ${rut1.Number}-${rut1.Dv}") //Rut 1: 11111111-1
+    Console.WriteLine($"Rut 1: ${rut1.CleanRut}")          //Rut 1: 11111111-1
+    Console.WriteLine($"Rut 1: ${rut1.WithDots}")          //Rut 1: 11.111.111-1
+    Console.WriteLine($"Rut 1: ${rut1.WithDotsNoDv}")      //Rut 1: 11.111.111
+    
+    Console.WriteLine($"Rut 2: ${rut2.Number}-${rut1.Dv}") //Rut 2: 1-1
+    Console.WriteLine($"Rut 2: ${rut2.CleanRut}")          //Rut 2: 1-9
+    Console.WriteLine($"Rut 2: ${rut2.WithDots}")          //Rut 2: 1-9
+    Console.WriteLine($"Rut 2: ${rut2.WithDotsNoDv}")      //Rut 2: 1
+    
+    Console.WriteLine($"Rut 3: ${rut3.Number}-${rut1.Dv}") //Rut 3: 18464695-1
+    Console.WriteLine($"Rut 3: ${rut3.CleanRut}")          //Rut 3: 18464695-1
+    Console.WriteLine($"Rut 3: ${rut3.WithDots}")          //Rut 3: 18.464.695-1
+    Console.WriteLine($"Rut 3: ${rut3.WithDotsNoDv}")      //Rut 3: 18.464.695
+    
+    Console.WriteLine($"Rut 5: ${rut5.Number}-${rut5.Dv}") //Rut 5: 11111111-5
+    Console.WriteLine($"Rut 5: ${rut5.CleanRut}")          //Rut 5: 11111111-5
+    Console.WriteLine($"Rut 5: ${rut5.WithDots}")          //Rut 5: 11.111.111-5
+    Console.WriteLine($"Rut 5: ${rut5.WithDotsNoDv}")      //Rut 5: 11.111.111
+    
+}
+```
+
+### Utility Clases
+
+The `Rut.Utils` namespace has various static classes that are used by the `Rut`
+class for **Parsing, Validation, Formatting, etc**, and all methods are public.
+
+The main classes are:
+
+- Calculator
+- Validator
+- Formatter
+- Generator
+- Parser
+- Cleaner
+
 ## TODO
 
-- Format rut in many ways (Dots, No Dots, Dots with no DV, etc)
 - Generate random Rut's from a specified DV
 
 ## Setup
@@ -75,11 +137,11 @@ namespace, you can use them any way you want.
 
 #### .NET CLI
 
-`dotnet add package LucasLizama.Rut --version 0.1.2`
+`dotnet add package LucasLizama.Rut --version 0.3.0`
 
 #### Package Manager
 
-`Install-Package LucasLizama.Rut -Version 0.1.2`
+`Install-Package LucasLizama.Rut -Version 0.3.0`
 
 ### Build from source
 
