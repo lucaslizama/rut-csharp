@@ -31,7 +31,7 @@ namespace Rut.Utils
         }
 
 
-        public static Rut[] GenerateRandomRuts(int ammount, bool noRepeat = true)
+        public static Rut[] GenerateRandomRuts(int ammount, bool noRepeat = false)
         {
             Rut[] ruts = new Rut[ammount];
 
