@@ -1,11 +1,12 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
 namespace Rut.Utils
 {
-    public class Calculator
+    public static class Calculator
     {
-        public static char CalculateDV(int rut)
+        public static char CalculateDv(int rut)
         {
             int[] digits = InverseRutDigits(rut);
             int sum = SumInversedRutDigits(digits);
@@ -15,7 +16,7 @@ namespace Rut.Utils
             return dv == 11 ? '0' : dv == 10 ? 'K' : dv.ToString()[0];
         }
 
-        public static char CalculateDV(string rut)
+        public static char CalculateDv(string rut)
         {
             int[] digits = InverseRutDigits(rut);
             int sum = SumInversedRutDigits(digits);
@@ -53,60 +54,113 @@ namespace Rut.Utils
             });
         }
 
-        public static List<List<T>> Chunk<T>(IEnumerable<T> numbers, int size)
+        public static List<List<T>> Chunk<T>(IEnumerable<T> elements, int size)
         {
-            if (numbers.Count() == 0) return new List<List<T>>();
-            if (size > numbers.Count()) return new List<List<T>> { numbers.ToList() };
+            var elementsList = elements.ToList();
 
-            List<T> numbersList = numbers.ToList();
-            List<List<T>> chunks = new List<List<T>>();
+            if (!elementsList.Any() || size <= 0) return new List<List<T>>();
+            if (size > elementsList.Count()) return new List<List<T>> {elementsList};
+            if (size == 1) return SplitIntoChunksOfOne(elementsList);
 
-            int numberCount = numbersList.Count;
-            int chunksCount = CountChunks(numberCount, size);
+            return SplitIntoChunks(elementsList, size);
+        }
 
-            for (int i = 0; i < chunksCount; i++)
+        public static List<List<T>> ChunkInversed<T>(IEnumerable<T> elements, int size)
+        {
+            var elementsList = elements.ToList();
+
+            if (!elementsList.Any() || size <= 0) return new List<List<T>>();
+            if (size > elementsList.Count()) return new List<List<T>> {elementsList};
+            if (size == 1) return SplitIntoChunksOfOneInversed(elementsList);
+
+            return SplitIntoChunksInversed(elementsList, size).ToList();
+        }
+
+        private static List<List<T>> SplitIntoChunks<T>(List<T> list, int size)
+        {
+            var numberOfElements = list.Count;
+            var numberOfChunks = CountChunks(numberOfElements, size);
+            var chunks = new List<List<T>>();
+
+            for (var i = 0; i < numberOfChunks; i++)
             {
-                int index = i * size;
-                int take = CalculateTake(numberCount, index, size);
-                chunks.Add(numbersList.GetRange(index, take));
+                var index = i * size;
+                var take = CalculateTake(numberOfElements, index, size);
+                chunks.Add(list.GetRange(index, take));
             }
 
             return chunks;
         }
 
-        public static List<List<T>> ChunkLeft<T>(IEnumerable<T> numbers, int size)
+        private static List<List<T>> SplitIntoChunksInversed<T>(List<T> list, int size)
         {
-            if (numbers.Count() == 0) return new List<List<T>>();
-            if (size > numbers.Count()) return new List<List<T>> { numbers.ToList() };
-
-            List<T> numbersList = numbers.ToList();
-            List<List<T>> chunks = new List<List<T>>();
-
-            int numberCount = numbersList.Count;
-            int chunksCount = CountChunks(numberCount, size);
-
-            for (int i = chunksCount - 1; i >= 0; i--)
+            var iterations = 0;
+            var chunks = new Stack<List<T>>();
+            var chunk = new Stack<T>();
+            
+            for (var i = list.Count - 1; i >= 0 ; --i)
             {
-                int index = i * size;
-                int take = CalculateTake(numberCount, index, size);
-                chunks.Add(numbersList.GetRange(index, take));
-            }
+                chunk.Push(list[i]);
+                iterations++;
 
+                if (iterations != size && i > 0) continue;
+                
+                chunks.Push(chunk.ToList());
+                iterations = 0;
+                chunk = new Stack<T>();
+            }
+            
+            return chunks.ToList();
+        }
+
+        private static List<List<T>> SplitIntoChunksOfOne<T>(IEnumerable<T> list)
+        {
+            return list.Aggregate(new List<List<T>>(), (prev, curr) =>
+            {
+                prev.Add(new List<T>() {curr});
+                return prev;
+            });
+        }
+        
+        private static List<List<T>> SplitIntoChunksOfOneInversed<T>(IEnumerable<T> list)
+        {
+            var chunks = list.Aggregate(new List<List<T>>(), (prev, curr) =>
+            {
+                prev.Add(new List<T>() {curr});
+                return prev;
+            });
             return chunks;
         }
 
-        private static int CalculateTake(int numberCount, int index, int size)
+        private static int CalculateTake(int numberOfElements, int startIndex, int chunkSize)
         {
-            int overflow = index + size;
-            bool overflowed = overflow > numberCount;
-            int rest = overflow - numberCount;
-            int take = overflowed ? rest : size;
+            var finalIndex = numberOfElements - 1;
+            var nextIndex = startIndex + chunkSize;
+            var rest = numberOfElements % chunkSize;
+            var take = nextIndex > finalIndex && rest > 0 ? rest : chunkSize;
             return take;
         }
 
         private static int CountChunks(int totalElements, int chunkSize)
         {
             return totalElements % chunkSize == 0 ? totalElements / chunkSize : (totalElements / chunkSize) + 1;
+        }
+
+        public static List<T> Flatten<T>(IEnumerable<IEnumerable<T>> chunks)
+        {
+            return chunks.Aggregate(new List<T>(), (prev, curr) =>
+            {
+                prev.AddRange(curr);
+                return prev;
+            });
+        }
+
+        public static bool CompareList<T>(List<T> list1, List<T> list2)
+        {
+            if (list1 == null || list2 == null) throw new Exception("Error: null value received instead of list");
+            if (list1.Count != list2.Count) return false;
+            var equal = list1.Select((element, index) => element.Equals(list2[index])).All(result => result);
+            return equal;
         }
     }
 }

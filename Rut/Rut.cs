@@ -1,4 +1,3 @@
-using System;
 using Rut.Exceptions;
 using Rut.Utils;
 
@@ -6,15 +5,12 @@ namespace Rut
 {
     public class Rut
     {
-        private int number;
-        private char dv;
-
-        public int Number { get => number; set => number = value; }
-        public char Dv { get => dv; set => dv = value; }
-        public string WithDots { get => Formatter.AddDots(number, dv); }
-        public string WithDotsNoDv { get => Formatter.AddDotsNoDv(number); }
-        public string CleanRut { get => Formatter.Clean(number, dv); }
-        public bool Valid { get => Validator.IsRutValid(number, dv); }
+        public int Number { get; set; }
+        public char Dv { get; set; }
+        public string WithDots => Formatter.AddDots(Number, Dv);
+        public string WithDotsNoDv => Formatter.AddDotsNoDv(Number);
+        public string CleanRut => Formatter.Clean(Number, Dv);
+        public bool Valid => Validator.IsRutValid(Number, Dv);
 
         /// <summary>
         /// Creates a rut object from a rut number and parse
@@ -30,12 +26,9 @@ namespace Rut
         /// Creates a rut object from the rut number and dv
         /// received, even if they are not valid.
         /// </summary>
-        /// <param name="rut">Rut number</param>
+        /// <param name="number">Rut number</param>
         /// <param name="dv">Rut Dv</param>
-        public Rut(int number, char dv)
-        {
-            AssignRutValues(number, dv);
-        }
+        public Rut(int number, char dv) => AssignRutValues(number, dv);
 
         /// <summary>
         /// Parses rut from a string in a variety of formats into
@@ -53,31 +46,26 @@ namespace Rut
         /// <param name="rut">Valid rut string</param>
         public Rut(string rut)
         {
-            string cleanRut = Cleaner.CleanRutString(rut);
-            bool invalid = !Validator.IsRutValid(cleanRut);
+            var cleanRut = Cleaner.CleanRutString(rut);
+            var invalid = !Validator.IsRutValid(cleanRut);
             if (invalid) throw new InvalidRutStringException("The rut is invalid!");
             AssignRutValues(Parser.ParseCleanRutString(cleanRut));
         }
 
         private void AssignRutValues(int number, char dv)
         {
-            this.number = number;
-            this.dv = dv;
+            Number = number;
+            Dv = dv;
         }
 
-        private void AssignRutValues(Tuple<int, char> rut)
+        private void AssignRutValues((int number, char dv) rut)
         {
-            AssignRutValues(rut.Item1, rut.Item2);
+            var (number, dv) = rut;
+            AssignRutValues(number, dv);
         }
 
-        private void AssignRutValues(int number)
-        {
-            AssignRutValues(number, Calculator.CalculateDV(number));
-        }
+        private void AssignRutValues(int number) => AssignRutValues(number, Calculator.CalculateDv(number));
 
-        public override string ToString()
-        {
-            return $"Status: {(Valid ? "Valid" : "Invalid")}\nRut:{WithDots}";
-        }
+        public override string ToString() => $"Status: {(Valid ? "Valid" : "Invalid")}\nRut:{WithDots}";
     }
 }

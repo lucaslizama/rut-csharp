@@ -2,9 +2,9 @@ using System.Linq;
 
 namespace Rut.Utils
 {
-    public class Validator
+    public static class Validator
     {
-        private static readonly char[] VALID_DV_VALUES = { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'K' };
+        private static readonly char[] ValidDvValues = { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'K' };
 
         public static bool IsRutValid(int rut)
         {
@@ -39,7 +39,7 @@ namespace Rut.Utils
         public static bool IsRutValid(int rut, char dv)
         {
             if (!IsRutValid(rut)) return false;
-            if (Calculator.CalculateDV(rut) != dv) return false;
+            if (Calculator.CalculateDv(rut) != dv) return false;
 
             return true;
         }
@@ -47,14 +47,14 @@ namespace Rut.Utils
         public static bool IsRutValid(string rut, char dv)
         {
             if (!IsRutValid(rut)) return false;
-            if (Calculator.CalculateDV(rut) != dv) return false;
+            if (Calculator.CalculateDv(rut) != dv) return false;
 
             return true;
         }
 
         public static bool IsValidDv(char dv)
         {
-            return VALID_DV_VALUES.Any(valid =>
+            return ValidDvValues.Any(valid =>
             {
                 bool equal = dv == valid;
                 return equal;

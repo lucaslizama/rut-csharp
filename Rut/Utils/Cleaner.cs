@@ -1,6 +1,6 @@
 namespace Rut.Utils
 {
-    public class Cleaner
+    public static class Cleaner
     {
         public static string CleanRutString(string rut)
         {

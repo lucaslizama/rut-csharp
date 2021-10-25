@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace Rut.Utils
 {
-    public class Generator
+    public static class Generator
     {
         public static Rut GenerateRandomRut()
         {

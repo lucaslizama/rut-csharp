@@ -14,11 +14,12 @@ namespace Rut.Tests.UtilsTests
         [InlineData(1234, '3', "1.234-3")]
         public void FormatterShouldAddDotsToRutNumber(int number, char dv, string correctRut)
         {
-            Assert.Equal(correctRut, Formatter.AddDots(number, dv));
+            var rutWithDots = Formatter.AddDots(number, dv);
+            Assert.Equal(correctRut, rutWithDots);
         }
 
         [Theory]
-        [InlineData(3, "3-5")]
+        [InlineData(3, "3")]
         [InlineData(18116416, "18.116.416")]
         [InlineData(18835838, "18.835.838")]
         [InlineData(18464695, "18.464.695")]
