@@ -3,7 +3,6 @@
 ![Nuget](https://img.shields.io/nuget/dt/LucasLizama.Rut?style=for-the-badge)
 ![GitHub](https://img.shields.io/github/license/lucaslizama/rut?style=for-the-badge)
 ![Lines of code](https://img.shields.io/tokei/lines/github/lucaslizama/rut?style=for-the-badge)
-![Twitter URL](https://img.shields.io/twitter/url?style=for-the-badge&url=https%3A%2F%2Fimg.shields.io%2Ftwitter%2Furl%3Fstyle%3Dsocial%26url%3Dhttps%253A%252F%252Ftwitter.com%252FLucaslizama)
 [![Donate](https://img.shields.io/badge/Donate-Paypal-blue?style=for-the-badge&logo=paypal)](https://www.paypal.com/donate?business=PYWFG2U5KRY2N&no_recurring=0&item_name=Develop+and+maintain+quality%2C+free+and+open+source+software&currency_code=USD)
 
 ## Table of Contents
