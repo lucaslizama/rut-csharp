@@ -1,28 +1,30 @@
 # Rut - Validator, Formatter & Generator
-![GitHub repo size](https://img.shields.io/github/repo-size/lucaslizama/rut?style=for-the-badge)
-![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/lucaslizama/rut?style=for-the-badge)
-![Lines of code](https://img.shields.io/tokei/lines/github/lucaslizama/rut?style=for-the-badge)
-![GitHub Repo stars](https://img.shields.io/github/stars/lucaslizama/rut?style=for-the-badge)
-![Nuget](https://img.shields.io/nuget/dt/LucasLizama.Rut?style=for-the-badge)
 ![Nuget](https://img.shields.io/nuget/v/Lucaslizama.Rut?style=for-the-badge)
+![Nuget](https://img.shields.io/nuget/dt/LucasLizama.Rut?style=for-the-badge)
 ![GitHub](https://img.shields.io/github/license/lucaslizama/rut?style=for-the-badge)
+![Lines of code](https://img.shields.io/tokei/lines/github/lucaslizama/rut?style=for-the-badge)
 ![Twitter URL](https://img.shields.io/twitter/url?style=for-the-badge&url=https%3A%2F%2Fimg.shields.io%2Ftwitter%2Furl%3Fstyle%3Dsocial%26url%3Dhttps%253A%252F%252Ftwitter.com%252FLucaslizama)
-
+[![Donate](https://img.shields.io/badge/Donate-Paypal-blue?style=for-the-badge&logo=paypal)](https://www.paypal.com/donate?business=PYWFG2U5KRY2N&no_recurring=0&item_name=Develop+and+maintain+quality%2C+free+and+open+source+software&currency_code=USD)
 
 ## Table of Contents
 
-- [Introduction](#introduction)
-- [Technologies](#technologies)
-- [Framework Compatibility](#framework-compatibility)
-- [Features](#features)
-- [TODO](#todo)
-- [Setup](#setup)
-  - [Install from NuGet](#install-from-nuget)
-    - [.NET CLI](#net-cli)
-    - [Package Manager](#package-manager)
-  - [Build from source](#build-from-source)
-    - [Command Line](#command-line)
-    - [IDE](#ide)
+- [Rut - Validator, Formatter & Generator](#rut---validator-formatter--generator)
+  - [Table of Contents](#table-of-contents)
+  - [Introduction](#introduction)
+  - [Technologies](#technologies)
+  - [Framework Compatibility](#framework-compatibility)
+  - [Features](#features)
+  - [Usage](#usage)
+    - [Rut Class](#rut-class)
+    - [Utility Clases](#utility-clases)
+  - [TODO](#todo)
+  - [Setup](#setup)
+    - [Install from NuGet](#install-from-nuget)
+      - [.NET CLI](#net-cli)
+      - [Package Manager](#package-manager)
+    - [Build from source](#build-from-source)
+      - [Command Line](#command-line)
+      - [IDE](#ide)
 
 ## Introduction
 
