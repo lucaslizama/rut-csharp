@@ -3,7 +3,7 @@
         <PackageId>LucasLizama.Rut</PackageId>
         <Title>Rut</Title>
         <PackageReadmeFile>README.md</PackageReadmeFile>
-        <Version>0.1.2</Version>
+        <Version>0.3.2</Version>
         <Authors>lucaslizama</Authors>
         <RepositoryUrl></RepositoryUrl>
         <TargetFrameworks>netstandard2.1;netstandard2.0;net5.0;netcoreapp3.1;net48;net472;net471;net47;net462;net461;net46;net452;net451;net45</TargetFrameworks>
@@ -12,12 +12,12 @@
         <RepositoryUrl>https://github.com/lucaslizama/rut</RepositoryUrl>
         <RepositoryType>git</RepositoryType>
         <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-        <PackageVersion>0.3.0</PackageVersion>
+        <PackageVersion>0.3.2</PackageVersion>
     </PropertyGroup>
     <ItemGroup>
         <None Include="..\README.md" Pack="true" PackagePath="" />
     </ItemGroup>
     <ItemGroup>
-      <PackageReference Include="System.ValueTuple" Version="4.5.0" />
+        <PackageReference Include="System.ValueTuple" Version="4.5.0" />
     </ItemGroup>
 </Project>
