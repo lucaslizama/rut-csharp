@@ -30,7 +30,7 @@ namespace Rut.Utils
             return rut;
         }
 
-
+        public static List<Rut> GenerateRandomRuts(int ammount, bool noRepeat = false)
         public static Rut[] GenerateRandomRuts(int ammount, bool noRepeat = false)
         {
             Rut[] ruts = new Rut[ammount];
@@ -46,10 +46,10 @@ namespace Rut.Utils
                 ruts[i] = newRut;
             }
 
-            return ruts;
+            return ruts.ToList();
         }
 
-        public static Rut[] GenerateRandomRuts(int ammount, char dv, bool noRepeat = true)
+        public static List<Rut> GenerateRandomRuts(int ammount, char dv, bool noRepeat = true)
         {
             Rut[] ruts = new Rut[ammount];
 
@@ -64,7 +64,7 @@ namespace Rut.Utils
                 ruts[i] = newRut;
             }
 
-            return ruts;
+            return ruts.ToList();
         }
 
         private static IEnumerable<int> GetNumberGenerator()
