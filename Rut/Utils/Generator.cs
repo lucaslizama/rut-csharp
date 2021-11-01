@@ -67,7 +67,7 @@ namespace Rut.Utils
             return ruts;
         }
 
-        private static IEnumerator<int> GetRandomRutNumberGenerator()
+        private static IEnumerable<int> GetNumberGenerator()
         {
             while (true)
             {
