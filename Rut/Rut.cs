@@ -1,3 +1,4 @@
+using System;
 using Rut.Exceptions;
 using Rut.Utils;
 
@@ -66,6 +67,10 @@ namespace Rut
 
         private void AssignRutValues(int number) => AssignRutValues(number, Calculator.CalculateDv(number));
 
-        public override string ToString() => $"Status: {(Valid ? "Valid" : "Invalid")}\nRut:{WithDots}";
+        public override string ToString() => $"Status: {(IsValid ? "Valid" : "Invalid")}\nRut:{WithDots}";
+
+        public override bool Equals(object other) => other != null && ((other as Rut).Number == Number && (other as Rut).Dv == Dv);
+
+        public override int GetHashCode() => HashCode.Combine(Number, Dv);
     }
 }
