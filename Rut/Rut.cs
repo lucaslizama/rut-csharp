@@ -10,7 +10,7 @@ namespace Rut
         public string WithDots => Formatter.AddDots(Number, Dv);
         public string WithDotsNoDv => Formatter.AddDotsNoDv(Number);
         public string Clean => Formatter.Clean(Number, Dv);
-        public bool Valid => Validator.IsRutValid(Number, Dv);
+        public bool IsValid => Validator.IsRutValid(Number, Dv);
 
         /// <summary>
         /// Creates a rut object from a rut number and parse
