@@ -8,30 +8,22 @@ namespace Rut.Utils
     {
         public static Rut GenerateRandomRut()
         {
-            using (var generator = GetRandomRutNumberGenerator())
-            {
-                generator.MoveNext();
-                int number = generator.Current;
-                return new Rut(number);
-            }
+            var randomRut = GetNumberGenerator()
+                .Select(number => new Rut(number))
+                .First();
+            return randomRut;
         }
 
         public static Rut GenerateRandomRut(char dv)
         {
-            var generator = GetRandomRutNumberGenerator();
-            Rut rut = null;
-
-            while (generator.MoveNext())
-            {
-                rut = new Rut(generator.Current);
-                if (rut.Dv == dv) break;
-            }
-
-            return rut;
+            var randomRut = GetNumberGenerator()
+                .Select(number => new Rut(number))
+                .Where(rut => rut.Dv == dv)
+                .First();
+            return randomRut;
         }
 
         public static List<Rut> GenerateRandomRuts(int ammount, bool noRepeat = false)
-        public static Rut[] GenerateRandomRuts(int ammount, bool noRepeat = false)
         {
             Rut[] ruts = new Rut[ammount];
 
