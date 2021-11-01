@@ -9,7 +9,7 @@ namespace Rut
         public char Dv { get; set; }
         public string WithDots => Formatter.AddDots(Number, Dv);
         public string WithDotsNoDv => Formatter.AddDotsNoDv(Number);
-        public string CleanRut => Formatter.Clean(Number, Dv);
+        public string Clean => Formatter.Clean(Number, Dv);
         public bool Valid => Validator.IsRutValid(Number, Dv);
 
         /// <summary>
