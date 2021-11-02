@@ -9,17 +9,17 @@
 - [Rut - Validator, Formatter & Generator](#rut---validator-formatter--generator)
   - [Table of Contents](#table-of-contents)
   - [Introduction](#introduction)
+  - [Setup](#setup)
+    - [Install from NuGet](#install-from-nuget)
+      - [.NET CLI](#net-cli)
+      - [Package Manager](#package-manager)
   - [Technologies](#technologies)
   - [Framework Compatibility](#framework-compatibility)
   - [Features](#features)
   - [Usage](#usage)
     - [Rut Class](#rut-class)
+    - [Generator Class](#generator-class)
     - [Utility Clases](#utility-clases)
-  - [TODO](#todo)
-  - [Setup](#setup)
-    - [Install from NuGet](#install-from-nuget)
-      - [.NET CLI](#net-cli)
-      - [Package Manager](#package-manager)
     - [Build from source](#build-from-source)
       - [Command Line](#command-line)
       - [IDE](#ide)
@@ -30,6 +30,18 @@ Rut is a library written with the purpose of centralizing all
 common Chilean Rut operations and use cases in a lightweight 
 and easy to use package. It's written in C# and targets most 
 .NET recent versions.
+
+## Setup
+
+### Install from NuGet
+
+#### .NET CLI
+
+`dotnet add package LucasLizama.Rut --version 0.3.0`
+
+#### Package Manager
+
+`Install-Package LucasLizama.Rut -Version 0.3.0`
 
 ## Technologies
 
@@ -60,6 +72,8 @@ and easy to use package. It's written in C# and targets most
 - Calculate rut DV (Verification Digit) automatically or on demand.
 - Validate rut DV.
 - Generate random Rut or Rut's with or without duplicates.
+- Generate random Rut or Rut's with specific DV with or without duplicates.
+- Generate Rut's from a numeric range.
 - All code used by the Rut class to calculate, parse, validate 
 and format is public and stored in utility classes on the `Rut.Utils`
 namespace, you can use them any way you want.
@@ -77,11 +91,11 @@ using Rut;
 
 static void Main(string[] args) // args = {"11111111", "1-9", "18.464.695", "Not A Rut"} 
 {
-    Rut rut1 = new Rut(args[0])
-    Rut rut2 = new Rut(args[1])
-    Rut rut3 = new Rut(args[2])
-    Rut rut4 = new Rut(args[3]) // This would throw an InvalidRutStringException
-    rut rut5 = new Rut("11.111.111", '5') // The Dv is wrong in this one
+    var rut1 = new Rut(args[0])
+    var rut2 = new Rut(args[1])
+    var rut3 = new Rut(args[2])
+    var rut4 = new Rut(args[3]) // This would throw an InvalidRutStringException
+    var rut5 = new Rut("11.111.111", '5') // The Dv is wrong in this one
     
     // Check if rut is valid
     Console.WriteLine($"Rut 1 valid: ${rut1.Valid}") // True
@@ -109,7 +123,30 @@ static void Main(string[] args) // args = {"11111111", "1-9", "18.464.695", "Not
     Console.WriteLine($"Rut 5: ${rut5.CleanRut}")          //Rut 5: 11111111-5
     Console.WriteLine($"Rut 5: ${rut5.WithDots}")          //Rut 5: 11.111.111-5
     Console.WriteLine($"Rut 5: ${rut5.WithDotsNoDv}")      //Rut 5: 11.111.111
-    
+}
+```
+
+### Generator Class
+
+```c#
+using Rut;
+using Rut.Utils;
+
+static void Main(string[] args) 
+{
+    // Generate a Random Rut
+    var rut1 = Generator.RandomRut(); // Totally random
+    var rut2 = Generator.RandomRut('K'); // DV will be 'K'
+    var rut3 = Generator.RandomRut('1'); // DV will be '1'
+
+    // Generate a List of random Rut's
+    var ruts1 = Generator.RandomRuts(100); // Totally random, 100 ruts, can repeat.
+    var ruts2 = Generator.RandomRuts(100, 'K') // DV's will be 'K', 100 ruts, can repeat.
+    var ruts3 = Generator.RandomRuts(100, '5', true) // DV's will be '5', 100 ruts, no duplicates.
+
+    // Generate a List of Rut's from a given numeric range
+    var ruts4 = Generator.RutRange(1, 100); // All rut's from 1 to 100 inclusive, 100 ruts.
+    var ruts5 = Generator.RutRange(18_000_000, 19_000_000) // 1.000.001 rut's because of inclusive min/max.
 }
 ```
 
@@ -126,22 +163,6 @@ The main classes are:
 - Generator
 - Parser
 - Cleaner
-
-## TODO
-
-- Generate random Rut's from a specified DV
-
-## Setup
-
-### Install from NuGet
-
-#### .NET CLI
-
-`dotnet add package LucasLizama.Rut --version 0.3.0`
-
-#### Package Manager
-
-`Install-Package LucasLizama.Rut -Version 0.3.0`
 
 ### Build from source
 
