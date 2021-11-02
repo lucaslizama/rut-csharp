@@ -6,7 +6,7 @@ namespace Rut.Utils
 {
     public static class Generator
     {
-        public static Rut GenerateRandomRut()
+        public static Rut RandomRut()
         {
             var randomRut = GetNumberGenerator()
                 .Select(number => new Rut(number))
@@ -14,7 +14,7 @@ namespace Rut.Utils
             return randomRut;
         }
 
-        public static Rut GenerateRandomRut(char dv)
+        public static Rut RandomRut(char dv)
         {
             var randomRut = GetNumberGenerator()
                 .Select(number => new Rut(number))
@@ -23,24 +23,52 @@ namespace Rut.Utils
             return randomRut;
         }
 
-        public static List<Rut> GenerateRandomRuts(int ammount, bool noRepeat = false)
+        public static List<Rut> RandomRuts(int ammount, bool noRepeat = false)
         {
             var generator = GetRutGenerator();
             return (
                 noRepeat ?
-                generator.Take(ammount).Distinct() :
+                generator.Distinct().Take(ammount) :
                 generator.Take(ammount)
             ).ToList();
         }
 
-        public static List<Rut> GenerateRandomRuts(int ammount, char dv, bool noRepeat = false)
+        public static List<Rut> RandomRuts(int ammount, char dv, bool noRepeat = false)
         {
             var generator = GetRutGenerator();
             return (
                 noRepeat ?
-                generator.Take(ammount).Where(rut => rut.Dv == dv).Distinct() :
-                generator.Take(ammount).Where(rut => rut.Dv == dv)
+                generator.Distinct().Where(rut => rut.Dv == dv).Take(ammount) :
+                generator.Where(rut => rut.Dv == dv).Take(ammount)
             ).ToList();
+        }
+
+        public static List<Rut> RutRange(int start, int end)
+        {
+            return GetNumericRange(start, end).Select(number => new Rut(number)).ToList();
+        }
+
+        public static List<int> GetNumericRange(int start, int end)
+        {
+            if (start == 0 || end == 0) throw new Exception("Rut number cannot be '0'");
+            if (start < 0 || end < 0) throw new Exception("Rut number cannot be negative");
+            if (start > 99_999_999 || end > 99_999_999) throw new Exception("Rut cannot be grater than 99.999.999");
+            if (start > end) (start, end) = InvertNumbers(start, end);
+
+            List<int> numbers = new List<int>();
+            for (int i = start; i <= end; i++)
+            {
+                numbers.Add(i);
+            }
+            return numbers;
+        }
+
+        public static (int number1, int number2) InvertNumbers(int number1, int number2)
+        {
+            number1 = number2 + number1;
+            number2 = number1 - number2;
+            number1 = number1 - number2;
+            return (number1, number2);
         }
 
         private static IEnumerable<int> GetNumberGenerator()
@@ -56,7 +84,7 @@ namespace Rut.Utils
         {
             while (true)
             {
-                yield return GenerateRandomRut();
+                yield return RandomRut();
             }
         }
     }

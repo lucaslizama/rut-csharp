@@ -14,7 +14,8 @@ namespace Rut
         public bool IsValid => Validator.IsRutValid(Number, Dv);
 
         /// <summary>
-        /// Creates a rut object from a rut number and parse
+        /// Creates a rut object from a rut number and 
+        /// automatically calculates the DV.
         /// </summary>
         /// <param name="number"></param>
         public Rut(int number)
