@@ -71,6 +71,6 @@ namespace Rut
 
         public override bool Equals(object other) => other != null && ((other as Rut).Number == Number && (other as Rut).Dv == Dv);
 
-        public override int GetHashCode() => HashCode.Combine(Number, Dv);
+        public override int GetHashCode() => Number ^ Dv;
     }
 }
