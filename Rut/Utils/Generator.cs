@@ -25,38 +25,22 @@ namespace Rut.Utils
 
         public static List<Rut> GenerateRandomRuts(int ammount, bool noRepeat = false)
         {
-            Rut[] ruts = new Rut[ammount];
-
-            for (int i = 0; i < ammount; i++)
-            {
-                Rut newRut = GenerateRandomRut();
-                if (ruts.Any(rut => rut.Number == newRut.Number) && noRepeat)
-                {
-                    --i;
-                    continue;
-                }
-                ruts[i] = newRut;
-            }
-
-            return ruts.ToList();
+            var generator = GetRutGenerator();
+            return (
+                noRepeat ?
+                generator.Take(ammount).Distinct() :
+                generator.Take(ammount)
+            ).ToList();
         }
 
-        public static List<Rut> GenerateRandomRuts(int ammount, char dv, bool noRepeat = true)
+        public static List<Rut> GenerateRandomRuts(int ammount, char dv, bool noRepeat = false)
         {
-            Rut[] ruts = new Rut[ammount];
-
-            for (int i = 0; i < ammount; i++)
-            {
-                Rut newRut = GenerateRandomRut(dv);
-                if (ruts.Any(rut => rut.Number == newRut.Number) && noRepeat)
-                {
-                    --i;
-                    continue;
-                }
-                ruts[i] = newRut;
-            }
-
-            return ruts.ToList();
+            var generator = GetRutGenerator();
+            return (
+                noRepeat ?
+                generator.Take(ammount).Where(rut => rut.Dv == dv).Distinct() :
+                generator.Take(ammount).Where(rut => rut.Dv == dv)
+            ).ToList();
         }
 
         private static IEnumerable<int> GetNumberGenerator()
@@ -65,6 +49,14 @@ namespace Rut.Utils
             {
                 Random rand = new Random();
                 yield return rand.Next(1, 100000000);
+            }
+        }
+
+        private static IEnumerable<Rut> GetRutGenerator()
+        {
+            while (true)
+            {
+                yield return GenerateRandomRut();
             }
         }
     }
