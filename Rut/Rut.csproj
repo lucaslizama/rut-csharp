@@ -2,6 +2,7 @@
     <PropertyGroup>
         <PackageId>LucasLizama.Rut</PackageId>
         <Title>Rut</Title>
+        <Description>Rut is a library for parsing, validating, formatting and generating Rut's.</Description>
         <PackageReadmeFile>README.md</PackageReadmeFile>
         <Version>0.4.2</Version>
         <Authors>lucaslizama</Authors>
