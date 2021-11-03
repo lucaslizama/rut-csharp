@@ -14,6 +14,12 @@
         <TargetFrameworks>netstandard2.1;netstandard2.0;net5.0;netcoreapp3.1;net48;net472;net471;net47;net462;net461;net46;net452;net451;net45</TargetFrameworks>
         <PackageTags>rut, Rut, chile, chilean ,Chile, Chilean, generator, parser, format, formatter, random, range, english</PackageTags>
         <IsPackable>true</IsPackable>
+        <PackageReleaseNotes>
+            Version: 0.4.2
+            
+            - Added more metadata for Nuget.
+            - Refactored .csproj file
+        </PackageReleaseNotes>
     </PropertyGroup>
     <ItemGroup>
         <None Include="..\README.md" Pack="true" PackagePath="" />
