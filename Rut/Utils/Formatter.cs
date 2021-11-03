@@ -10,6 +10,11 @@ namespace Rut.Utils
             return string.Concat(number, "-", dv);
         }
 
+        public static string CleanNoDash(int number, char dv)
+        {
+            return Clean(number, dv).Replace("-", "");
+        }
+
         public static string AddDots(int number, char dv)
         {
             return $"{AddDotsNoDv(number)}-{dv}";

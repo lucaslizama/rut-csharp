@@ -11,6 +11,7 @@ namespace Rut
         public string WithDots => Formatter.AddDots(Number, Dv);
         public string WithDotsNoDv => Formatter.AddDotsNoDv(Number);
         public string Clean => Formatter.Clean(Number, Dv);
+        public string CleanNoDash => Formatter.CleanNoDash(Number, Dv);
         public bool IsValid => Validator.IsRutValid(Number, Dv);
 
         /// <summary>
