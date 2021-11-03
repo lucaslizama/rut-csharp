@@ -16,15 +16,12 @@
         <IsPackable>true</IsPackable>
         <PackageReleaseNotes>
             Version: 0.4.2
-            
+
             - Added more metadata for Nuget.
             - Refactored .csproj file
         </PackageReleaseNotes>
     </PropertyGroup>
     <ItemGroup>
         <None Include="..\README.md" Pack="true" PackagePath="" />
-    </ItemGroup>
-    <ItemGroup>
-        <PackageReference Include="System.ValueTuple" Version="4.5.0" />
     </ItemGroup>
 </Project>

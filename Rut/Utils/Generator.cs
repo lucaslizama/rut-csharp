@@ -53,8 +53,11 @@ namespace Rut.Utils
             if (start == 0 || end == 0) throw new Exception("Rut number cannot be '0'");
             if (start < 0 || end < 0) throw new Exception("Rut number cannot be negative");
             if (start > 99_999_999 || end > 99_999_999) throw new Exception("Rut cannot be grater than 99.999.999");
-            if (start > end) (start, end) = InvertNumbers(start, end);
-
+#if NET47_OR_GREATER
+            if (start > end) (start, end) = (end, start);
+#else
+            if (start > end) InvertNumbers(ref start, ref end);
+#endif
             List<int> numbers = new List<int>();
             for (int i = start; i <= end; i++)
             {
@@ -63,12 +66,11 @@ namespace Rut.Utils
             return numbers;
         }
 
-        public static (int number1, int number2) InvertNumbers(int number1, int number2)
+        public static void InvertNumbers(ref int number1, ref int number2)
         {
             number1 = number2 + number1;
             number2 = number1 - number2;
             number1 = number1 - number2;
-            return (number1, number2);
         }
 
         private static IEnumerable<int> GetNumberGenerator()

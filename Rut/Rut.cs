@@ -60,11 +60,19 @@ namespace Rut
             Dv = dv;
         }
 
+#if NET47_OR_GREATER
         private void AssignRutValues((int number, char dv) rut)
         {
             var (number, dv) = rut;
             AssignRutValues(number, dv);
         }
+#else
+        private void AssignRutValues(Tuple<int, char> rut)
+        {
+            var number = rut.Item1; var dv = rut.Item2;
+            AssignRutValues(number, dv);
+        }
+#endif
 
         private void AssignRutValues(int number) => AssignRutValues(number, Calculator.CalculateDv(number));
 

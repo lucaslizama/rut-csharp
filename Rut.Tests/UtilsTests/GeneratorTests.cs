@@ -129,9 +129,10 @@ namespace Rut.Tests.UtilsTests
         [InlineData(420, 69)]
         public void NumbersShouldInvertCorrectly(int number1, int number2)
         {
-            var (number3, number4) = Generator.InvertNumbers(number1, number2);
-            Assert.Equal(number1, number4);
-            Assert.Equal(number2, number3);
+            int original1 = number1, original2 = number2;
+            Generator.InvertNumbers(ref number1, ref number2);
+            Assert.Equal(number1, original2);
+            Assert.Equal(number2, original1);
         }
     }
 }
