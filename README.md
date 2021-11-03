@@ -37,11 +37,11 @@ and easy to use package. It's written in C# and targets most
 
 #### .NET CLI
 
-`dotnet add package LucasLizama.Rut --version 0.4.1`
+`dotnet add package LucasLizama.Rut --version 0.4.2`
 
 #### Package Manager
 
-`Install-Package LucasLizama.Rut -Version 0.4.1`
+`Install-Package LucasLizama.Rut -Version 0.4.2`
 
 ## Technologies
 
