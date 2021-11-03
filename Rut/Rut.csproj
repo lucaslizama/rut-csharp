@@ -4,8 +4,8 @@
         <Title>Rut</Title>
         <Authors>lucaslizama</Authors>
         <Description>Rut is a library for parsing, validating, formatting and generating Chilean Rut's.</Description>
-        <Version>0.4.2</Version>
-        <PackageVersion>0.4.2</PackageVersion>
+        <Version>0.4.3</Version>
+        <PackageVersion>0.4.3</PackageVersion>
         <PackageReadmeFile>README.md</PackageReadmeFile>
         <PackageLicenseExpression>MIT</PackageLicenseExpression>
         <RepositoryUrl>https://github.com/lucaslizama/rut</RepositoryUrl>
@@ -15,10 +15,11 @@
         <PackageTags>rut, Rut, chile, chilean ,Chile, Chilean, generator, parser, format, formatter, random, range, english</PackageTags>
         <IsPackable>true</IsPackable>
         <PackageReleaseNotes>
-            Version: 0.4.2
+            Version: 0.4.3
 
-            - Added more metadata for Nuget.
-            - Refactored .csproj file
+            - Removed System.ValueTuple NuGet Dependency.
+            - Added preprocessors to classes using modern tuple syntax.
+            - Package has now 0 external dependencies.
         </PackageReleaseNotes>
     </PropertyGroup>
     <ItemGroup>
