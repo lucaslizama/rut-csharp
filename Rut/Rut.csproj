@@ -4,8 +4,8 @@
         <Title>Rut</Title>
         <Authors>lucaslizama</Authors>
         <Description>Rut is a library for parsing, validating, formatting and generating Chilean Rut's.</Description>
-        <Version>0.4.3</Version>
-        <PackageVersion>0.4.3</PackageVersion>
+        <Version>0.4.4</Version>
+        <PackageVersion>0.4.4</PackageVersion>
         <PackageReadmeFile>README.md</PackageReadmeFile>
         <PackageLicenseExpression>MIT</PackageLicenseExpression>
         <RepositoryUrl>https://github.com/lucaslizama/rut</RepositoryUrl>
@@ -15,11 +15,9 @@
         <PackageTags>rut, Rut, chile, chilean ,Chile, Chilean, generator, parser, format, formatter, random, range, english</PackageTags>
         <IsPackable>true</IsPackable>
         <PackageReleaseNotes>
-            Version: 0.4.3
+            Version: 0.4.4
 
-            - Removed System.ValueTuple NuGet Dependency.
-            - Added preprocessors to classes using modern tuple syntax.
-            - Package has now 0 external dependencies.
+            - Added new format property to rut class, CleanNoDash (184646951)
         </PackageReleaseNotes>
     </PropertyGroup>
     <ItemGroup>
