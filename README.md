@@ -27,9 +27,10 @@
 ## Introduction
 
 Rut is a library written with the purpose of centralizing all
-common Chilean Rut operations and use cases in a lightweight 
+common Chilean Rut operations and use cases in a lightweight
 and easy to use package. It's written in C# and targets most 
-.NET recent versions.
+.NET recent versions. This package has no external dependencies
+so it's very small.
 
 ## Setup
 
