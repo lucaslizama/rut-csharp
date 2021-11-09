@@ -92,38 +92,38 @@ using Rut;
 
 static void Main(string[] args) // args = {"11111111", "1-9", "18.464.695", "Not A Rut"} 
 {
-    var rut1 = new Rut(args[0])
-    var rut2 = new Rut(args[1])
-    var rut3 = new Rut(args[2])
-    var rut4 = new Rut(args[3]) // This would throw an InvalidRutStringException
-    var rut5 = new Rut("11.111.111", '5') // The Dv is wrong in this one
+    var rut1 = new Rut(args[0]);
+    var rut2 = new Rut(args[1]);
+    var rut3 = new Rut(args[2]);
+    var rut4 = new Rut(args[3]); // This would throw an InvalidRutStringException
+    var rut5 = new Rut("11.111.111", '5'); // The Dv is wrong in this one
     
     // Check if rut is valid
-    Console.WriteLine($"Rut 1 valid: ${rut1.Valid}") // True
-    Console.WriteLine($"Rut 2 valid: ${rut2.Valid}") // True
-    Console.WriteLine($"Rut 3 valid: ${rut3.Valid}") // True
-    Console.WriteLine($"Rut 5 valid: ${rut5.Valid}") // False
+    Console.WriteLine($"Rut 1 valid: ${rut1.Valid}"); // True
+    Console.WriteLine($"Rut 2 valid: ${rut2.Valid}"); // True
+    Console.WriteLine($"Rut 3 valid: ${rut3.Valid}"); // True
+    Console.WriteLine($"Rut 5 valid: ${rut5.Valid}"); // False
     
     // Rut string Formats
-    Console.WriteLine($"Rut 1: ${rut1.Number}-${rut1.Dv}") //Rut 1: 11111111-1
-    Console.WriteLine($"Rut 1: ${rut1.CleanRut}")          //Rut 1: 11111111-1
-    Console.WriteLine($"Rut 1: ${rut1.WithDots}")          //Rut 1: 11.111.111-1
-    Console.WriteLine($"Rut 1: ${rut1.WithDotsNoDv}")      //Rut 1: 11.111.111
+    Console.WriteLine($"Rut 1: ${rut1.Number}-${rut1.Dv}"); //Rut 1: 11111111-1
+    Console.WriteLine($"Rut 1: ${rut1.CleanRut}");          //Rut 1: 11111111-1
+    Console.WriteLine($"Rut 1: ${rut1.WithDots}");          //Rut 1: 11.111.111-1
+    Console.WriteLine($"Rut 1: ${rut1.WithDotsNoDv}");      //Rut 1: 11.111.111
     
-    Console.WriteLine($"Rut 2: ${rut2.Number}-${rut1.Dv}") //Rut 2: 1-1
-    Console.WriteLine($"Rut 2: ${rut2.CleanRut}")          //Rut 2: 1-9
-    Console.WriteLine($"Rut 2: ${rut2.WithDots}")          //Rut 2: 1-9
-    Console.WriteLine($"Rut 2: ${rut2.WithDotsNoDv}")      //Rut 2: 1
+    Console.WriteLine($"Rut 2: ${rut2.Number}-${rut1.Dv}"); //Rut 2: 1-1
+    Console.WriteLine($"Rut 2: ${rut2.CleanRut}");          //Rut 2: 1-9
+    Console.WriteLine($"Rut 2: ${rut2.WithDots}");          //Rut 2: 1-9
+    Console.WriteLine($"Rut 2: ${rut2.WithDotsNoDv}");      //Rut 2: 1
     
-    Console.WriteLine($"Rut 3: ${rut3.Number}-${rut1.Dv}") //Rut 3: 18464695-1
-    Console.WriteLine($"Rut 3: ${rut3.CleanRut}")          //Rut 3: 18464695-1
-    Console.WriteLine($"Rut 3: ${rut3.WithDots}")          //Rut 3: 18.464.695-1
-    Console.WriteLine($"Rut 3: ${rut3.WithDotsNoDv}")      //Rut 3: 18.464.695
+    Console.WriteLine($"Rut 3: ${rut3.Number}-${rut1.Dv}"); //Rut 3: 18464695-1
+    Console.WriteLine($"Rut 3: ${rut3.CleanRut}");          //Rut 3: 18464695-1
+    Console.WriteLine($"Rut 3: ${rut3.WithDots}");          //Rut 3: 18.464.695-1
+    Console.WriteLine($"Rut 3: ${rut3.WithDotsNoDv}");      //Rut 3: 18.464.695
     
-    Console.WriteLine($"Rut 5: ${rut5.Number}-${rut5.Dv}") //Rut 5: 11111111-5
-    Console.WriteLine($"Rut 5: ${rut5.CleanRut}")          //Rut 5: 11111111-5
-    Console.WriteLine($"Rut 5: ${rut5.WithDots}")          //Rut 5: 11.111.111-5
-    Console.WriteLine($"Rut 5: ${rut5.WithDotsNoDv}")      //Rut 5: 11.111.111
+    Console.WriteLine($"Rut 5: ${rut5.Number}-${rut5.Dv}"); //Rut 5: 11111111-5
+    Console.WriteLine($"Rut 5: ${rut5.CleanRut}");          //Rut 5: 11111111-5
+    Console.WriteLine($"Rut 5: ${rut5.WithDots}");          //Rut 5: 11.111.111-5
+    Console.WriteLine($"Rut 5: ${rut5.WithDotsNoDv}");      //Rut 5: 11.111.111
 }
 ```
 
@@ -142,12 +142,12 @@ static void Main(string[] args)
 
     // Generate a List of random Rut's
     var ruts1 = Generator.RandomRuts(100); // Totally random, 100 ruts, can repeat.
-    var ruts2 = Generator.RandomRuts(100, 'K') // DV's will be 'K', 100 ruts, can repeat.
-    var ruts3 = Generator.RandomRuts(100, '5', true) // DV's will be '5', 100 ruts, no duplicates.
+    var ruts2 = Generator.RandomRuts(100, 'K'); // DV's will be 'K', 100 ruts, can repeat.
+    var ruts3 = Generator.RandomRuts(100, '5', true); // DV's will be '5', 100 ruts, no duplicates.
 
     // Generate a List of Rut's from a given numeric range
     var ruts4 = Generator.RutRange(1, 100); // All rut's from 1 to 100 inclusive, 100 ruts.
-    var ruts5 = Generator.RutRange(18_000_000, 19_000_000) // 1.000.001 rut's because of inclusive min/max.
+    var ruts5 = Generator.RutRange(18_000_000, 19_000_000); // 1.000.001 rut's because of inclusive min/max.
 }
 ```
 
