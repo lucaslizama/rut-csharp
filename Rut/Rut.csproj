@@ -4,20 +4,22 @@
         <Title>Rut</Title>
         <Authors>lucaslizama</Authors>
         <Description>Rut is a library for parsing, validating, formatting and generating Chilean Rut's.</Description>
-        <Version>0.4.4</Version>
-        <PackageVersion>0.4.4</PackageVersion>
+        <Version>0.5.0</Version>
+        <PackageVersion>0.5.0</PackageVersion>
         <PackageReadmeFile>README.md</PackageReadmeFile>
         <PackageLicenseExpression>MIT</PackageLicenseExpression>
         <RepositoryUrl>https://github.com/lucaslizama/rut</RepositoryUrl>
         <RepositoryType>git</RepositoryType>
         <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-        <TargetFrameworks>netstandard2.1;netstandard2.0;net5.0;netcoreapp3.1;net48;net472;net471;net47;net462;net461;net46;net452;net451;net45</TargetFrameworks>
+        <TargetFrameworks>net10.0;net9.0;net8.0;net7.0;net6.0;netstandard2.1;netstandard2.0;net48;net472;net471;net47;net462;net461;net46;net452;net451;net45</TargetFrameworks>
         <PackageTags>rut, Rut, chile, chilean ,Chile, Chilean, generator, parser, format, formatter, random, range, english</PackageTags>
         <IsPackable>true</IsPackable>
         <PackageReleaseNotes>
-            Version: 0.4.4
+            Version: 0.5.0
 
-            - Added new format property to rut class, CleanNoDash (184646951)
+            - Added modern .NET compilation targets: net6.0, net7.0, net8.0, net9.0 and net10.0
+            - Removed end-of-life targets: net5.0 and netcoreapp3.1 (still covered by netstandard2.0/2.1)
+            - Silenced SYSLIB0051 on modern targets while keeping serialization support for legacy .NET Framework builds
         </PackageReleaseNotes>
     </PropertyGroup>
     <ItemGroup>
