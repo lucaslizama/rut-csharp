@@ -38,23 +38,26 @@ so it's very small.
 
 #### .NET CLI
 
-`dotnet add package LucasLizama.Rut --version 0.4.4`
+`dotnet add package LucasLizama.Rut --version 0.5.0`
 
 #### Package Manager
 
-`Install-Package LucasLizama.Rut -Version 0.4.4`
+`Install-Package LucasLizama.Rut -Version 0.5.0`
 
 ## Technologies
 
-- .NET 5.0
+- .NET 10.0
 - XUnit (Testing)
 
 ## Framework Compatibility
 
+- .NET 10.0
+- .NET 9.0
+- .NET 8.0
+- .NET 7.0
+- .NET 6.0
 - .NET Standard 2.1
 - .NET Standard 2.0
-- .NET 5.0
-- .NET Core 3.1
 - .NET Framework 4.8.0
 - .NET Framework 4.7.2
 - .NET Framework 4.7.1
@@ -167,7 +170,7 @@ The main classes are:
 
 ### Build from source
 
-To build from source you need .NET 5.0 SDK and either: 
+To build from source you need .NET 10.0 SDK and either: 
 - Dotnet CLI, 
 - Visual Studio IDE
 - Jetbrains Rider IDE.
