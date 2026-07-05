@@ -38,11 +38,11 @@ so it's very small.
 
 #### .NET CLI
 
-`dotnet add package LucasLizama.Rut --version 0.5.0`
+`dotnet add package LucasLizama.Rut --version 0.5.1`
 
 #### Package Manager
 
-`Install-Package LucasLizama.Rut -Version 0.5.0`
+`Install-Package LucasLizama.Rut -Version 0.5.1`
 
 ## Technologies
 

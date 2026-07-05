@@ -4,8 +4,8 @@
         <Title>Rut</Title>
         <Authors>lucaslizama</Authors>
         <Description>Rut is a library for parsing, validating, formatting and generating Chilean Rut's.</Description>
-        <Version>0.5.0</Version>
-        <PackageVersion>0.5.0</PackageVersion>
+        <Version>0.5.1</Version>
+        <PackageVersion>0.5.1</PackageVersion>
         <PackageReadmeFile>README.md</PackageReadmeFile>
         <PackageLicenseExpression>MIT</PackageLicenseExpression>
         <RepositoryUrl>https://github.com/lucaslizama/rut</RepositoryUrl>
@@ -15,6 +15,10 @@
         <PackageTags>rut, Rut, chile, chilean ,Chile, Chilean, generator, parser, format, formatter, random, range, english</PackageTags>
         <IsPackable>true</IsPackable>
         <PackageReleaseNotes>
+            Version: 0.5.1
+
+            - Updated the bundled README to reflect the modern .NET target matrix
+
             Version: 0.5.0
 
             - Added modern .NET compilation targets: net6.0, net7.0, net8.0, net9.0 and net10.0
